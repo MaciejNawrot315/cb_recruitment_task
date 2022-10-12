@@ -1,4 +1,5 @@
 import 'package:code_borthers_recruitment_task/services/network_services/network_service.dart';
+import 'package:code_borthers_recruitment_task/ui/main_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,8 +13,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
+    return MaterialApp(
+      home: MainPage(),
     );
   }
 }
