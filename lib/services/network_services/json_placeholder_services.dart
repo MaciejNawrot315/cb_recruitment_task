@@ -5,16 +5,16 @@ class JsonPlaceholderServices {
   static const String jsonPlaceholderPath =
       'https://jsonplaceholder.typicode.com';
 
-  static Future<Response<dynamic>> getPhotos(int amount) async {
+  static Future<Response<dynamic>> getPhotos() async {
     Response<dynamic> response = await networkService.get(
-      '$jsonPlaceholderPath/photos?_limit=$amount',
+      '$jsonPlaceholderPath/photos',
     );
     return response;
   }
 
-  static Future<Response<dynamic>> getComments(int amount) async {
+  static Future<Response<dynamic>> getComments() async {
     Response<dynamic> response = await networkService.get(
-      '$jsonPlaceholderPath/comments?_limit=$amount',
+      '$jsonPlaceholderPath/comments',
     );
     return response;
   }

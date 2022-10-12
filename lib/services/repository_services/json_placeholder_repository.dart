@@ -4,9 +4,8 @@ import 'package:code_borthers_recruitment_task/services/network_services/json_pl
 import 'package:dio/dio.dart';
 
 class JsonPlaceholderRepository {
-  static Future<List<Photo>> getPhotos(int amount) async {
-    Response<dynamic> response =
-        await JsonPlaceholderServices.getPhotos(amount);
+  static Future<List<Photo>> getPhotos() async {
+    Response<dynamic> response = await JsonPlaceholderServices.getPhotos();
     List<Photo> listOfPhotos = List<Photo>.from(
       response.data.map(
         (photo) => Photo.fromJson(photo),
@@ -15,9 +14,8 @@ class JsonPlaceholderRepository {
     return listOfPhotos;
   }
 
-  static Future<List<Comment>> getComments(int amount) async {
-    Response<dynamic> response =
-        await JsonPlaceholderServices.getComments(amount);
+  static Future<List<Comment>> getComments() async {
+    Response<dynamic> response = await JsonPlaceholderServices.getComments();
     return List<Comment>.from(
       response.data.map(
         (photo) => Comment.fromJson(photo),
