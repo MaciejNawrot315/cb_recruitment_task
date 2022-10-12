@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'photos_cubit.dart';
 
 @immutable
@@ -11,4 +10,16 @@ abstract class PhotosState {
 
 class PhotosInitial extends PhotosState {
   const PhotosInitial({required super.photos});
+}
+
+class PhotosLoading extends PhotosState {
+  const PhotosLoading({required super.photos});
+}
+
+class PhotosLoaded extends PhotosState {
+  const PhotosLoaded({required super.photos});
+}
+
+class PhotosError extends PhotosState {
+  const PhotosError({required super.photos});
 }
