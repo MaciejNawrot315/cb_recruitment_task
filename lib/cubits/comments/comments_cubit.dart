@@ -16,7 +16,10 @@ class CommentsCubit extends Cubit<CommentsState> {
           await JsonPlaceholderRepository.getComments();
       emit(CommentsLoaded(comments: loadedComments));
     } on DioError catch (e) {
-      emit(const CommentsError(comments: []));
+      emit(CommentsError(
+        comments: const [],
+        errorMessage: e.message,
+      ));
     }
   }
 }

@@ -78,6 +78,7 @@ class CommentsPage extends StatelessWidget {
           if (state is CommentsError) {
             return ErrorInformation(
               onPressed: context.read<CommentsCubit>().loadComments,
+              errorMessage: state.errorMessage,
             );
           }
           return ListView.builder(
