@@ -56,6 +56,7 @@ class PhotosPage extends StatelessWidget {
         if (state is PhotosError) {
           return ErrorInformation(
             onPressed: context.read<PhotosCubit>().loadPhotos,
+            errorMessage: state.errorMessage,
           );
         }
         return const Center(

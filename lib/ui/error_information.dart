@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class ErrorInformation extends StatelessWidget {
   final Function onPressed;
-  const ErrorInformation({Key? key, required this.onPressed}) : super(key: key);
+  final String errorMessage;
+  const ErrorInformation(
+      {Key? key, required this.onPressed, required this.errorMessage})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +14,12 @@ class ErrorInformation extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text("We couldn't load your data"),
+          const SizedBox(height: 10),
+          Text(
+            "error message: $errorMessage",
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 10),
           TextButton(
             onPressed: () => onPressed(),
             style: const ButtonStyle(

@@ -9,17 +9,27 @@ abstract class PhotosState {
 }
 
 class PhotosInitial extends PhotosState {
-  const PhotosInitial({required super.photos});
+  const PhotosInitial({
+    required super.photos,
+  });
 }
 
 class PhotosLoading extends PhotosState {
-  const PhotosLoading({required super.photos});
+  const PhotosLoading({
+    required super.photos,
+  });
 }
 
 class PhotosLoaded extends PhotosState {
-  const PhotosLoaded({required super.photos});
+  const PhotosLoaded({
+    required super.photos,
+  });
 }
 
 class PhotosError extends PhotosState {
-  const PhotosError({required super.photos});
+  final String errorMessage;
+  const PhotosError({
+    required super.photos,
+    required this.errorMessage,
+  });
 }
