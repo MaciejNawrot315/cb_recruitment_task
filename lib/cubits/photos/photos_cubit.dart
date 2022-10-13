@@ -14,7 +14,7 @@ class PhotosCubit extends Cubit<PhotosState> {
       emit(const PhotosLoading(photos: []));
       List<Photo> loadedPhotos = await JsonPlaceholderRepository.getPhotos();
       emit(PhotosLoaded(photos: loadedPhotos));
-    } on DioError {
+    } on DioError catch (e) {
       emit(const PhotosError(photos: []));
     }
   }

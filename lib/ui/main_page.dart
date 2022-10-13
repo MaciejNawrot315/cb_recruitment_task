@@ -1,3 +1,4 @@
+import 'package:code_borthers_recruitment_task/cubits/comments/comments_cubit.dart';
 import 'package:code_borthers_recruitment_task/cubits/photos/photos_cubit.dart';
 import 'package:code_borthers_recruitment_task/ui/comments_page.dart';
 import 'package:code_borthers_recruitment_task/ui/photos_page.dart';
@@ -18,6 +19,7 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
     context.read<PhotosCubit>().loadPhotos();
+    context.read<CommentsCubit>().loadComments();
   }
 
   @override
