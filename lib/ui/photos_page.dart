@@ -1,6 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:code_borthers_recruitment_task/cubits/photos/photos_cubit.dart';
 import 'package:code_borthers_recruitment_task/models/photo.dart';
+import 'package:code_borthers_recruitment_task/ui/error_information.dart';
 import 'package:code_borthers_recruitment_task/ui/my_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,23 +54,8 @@ class PhotosPage extends StatelessWidget {
           );
         }
         if (state is PhotosError) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("We couldn't load your data"),
-                TextButton(
-                  onPressed: context.read<PhotosCubit>().loadPhotos,
-                  style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.blue),
-                  ),
-                  child: const Text(
-                    "Retry",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )
-              ],
-            ),
+          return ErrorInformation(
+            onPressed: context.read<PhotosCubit>().loadPhotos,
           );
         }
         return const Center(
