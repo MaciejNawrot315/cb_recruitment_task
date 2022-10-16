@@ -7,11 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'comments_state.dart';
 
 class CommentsCubit extends Cubit<CommentsState> {
-  CommentsCubit() : super(const CommentsInitial(comments: []));
+  CommentsCubit() : super(CommentsInitial());
 
   Future<void> loadComments() async {
     try {
-      emit(const CommentsLoading(comments: []));
+      emit(CommentsLoading());
       List<Comment> loadedComments =
           await JsonPlaceholderRepository.getComments();
       emit(CommentsLoaded(comments: loadedComments));

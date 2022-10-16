@@ -4,21 +4,13 @@ part of 'comments_cubit.dart';
 abstract class CommentsState {
   final List<Comment> comments;
   const CommentsState({
-    required this.comments,
+    this.comments = const [],
   });
 }
 
-class CommentsInitial extends CommentsState {
-  const CommentsInitial({
-    required super.comments,
-  });
-}
+class CommentsInitial extends CommentsState {}
 
-class CommentsLoading extends CommentsState {
-  const CommentsLoading({
-    required super.comments,
-  });
-}
+class CommentsLoading extends CommentsState {}
 
 class CommentsLoaded extends CommentsState {
   const CommentsLoaded({
