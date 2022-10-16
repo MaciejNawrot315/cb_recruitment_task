@@ -14,7 +14,7 @@ class MyCashedNetworkImage extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: url,
       placeholder: (context, url) => SizedBox(
-        height: 300,
+        height: 200,
         child: Center(
             child: Shimmer.fromColors(
           baseColor: Colors.grey[300]!,
