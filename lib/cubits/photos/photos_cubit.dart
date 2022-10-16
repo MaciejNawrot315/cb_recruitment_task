@@ -7,17 +7,43 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'photos_state.dart';
 
 class PhotosCubit extends Cubit<PhotosState> {
-  PhotosCubit() : super(const PhotosInitial(photos: []));
+  static const amountToLoad = 30;
+  PhotosCubit()
+      : super(
+          PhotosInitialLoading(),
+        );
 
   Future<void> loadPhotos() async {
     try {
-      emit(const PhotosLoading(photos: []));
-      List<Photo> loadedPhotos = await JsonPlaceholderRepository.getPhotos();
-      emit(PhotosLoaded(photos: loadedPhotos));
+      emit(PhotosInitialLoading());
+      List<Photo> loadedPhotos =
+          await JsonPlaceholderRepository.getPhotos(1, amountToLoad);
+      emit(PhotosLoaded(pageIndex: 1, photos: loadedPhotos));
     } on DioError catch (e) {
-      emit(PhotosError(
-        photos: const [],
+      emit(PhotosInitialError(
         errorMessage: e.message,
+      ));
+    }
+  }
+
+  Future<void> loadMorePhotos() async {
+    try {
+      emit(PhotosLoading(pageIndex: state.pageIndex + 1, photos: state.photos));
+      List<Photo> fetchedPhotos = await JsonPlaceholderRepository.getPhotos(
+          state.pageIndex, amountToLoad);
+      List<Photo> newStateList = state.photos.toList();
+      newStateList.addAll(fetchedPhotos);
+      if (fetchedPhotos.length != amountToLoad) {
+        emit(PhotosFullyLoaded(
+          photos: newStateList,
+        ));
+      } else {
+        emit(PhotosLoaded(pageIndex: state.pageIndex, photos: newStateList));
+      }
+    } on DioError catch (e) {
+      emit(PhotosMoreDownloadError(
+        pageIndex: state.pageIndex - 1,
+        photos: state.photos,
       ));
     }
   }

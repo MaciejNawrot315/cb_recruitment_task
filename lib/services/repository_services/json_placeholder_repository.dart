@@ -4,8 +4,9 @@ import 'package:code_borthers_recruitment_task/services/network_services/json_pl
 import 'package:dio/dio.dart';
 
 class JsonPlaceholderRepository {
-  static Future<List<Photo>> getPhotos() async {
-    Response<dynamic> response = await JsonPlaceholderServices.getPhotos();
+  static Future<List<Photo>> getPhotos(int offset, int amountToLoad) async {
+    Response<dynamic> response =
+        await JsonPlaceholderServices.getPhotos(offset, amountToLoad);
     List<Photo> listOfPhotos = List<Photo>.from(
       response.data.map(
         (photo) => Photo.fromJson(photo),

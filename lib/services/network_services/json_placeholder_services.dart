@@ -5,9 +5,12 @@ class JsonPlaceholderServices {
   static const String jsonPlaceholderPath =
       'https://jsonplaceholder.typicode.com';
 
-  static Future<Response<dynamic>> getPhotos() async {
+  static Future<Response<dynamic>> getPhotos(
+    int page,
+    int amountToLoad,
+  ) async {
     Response<dynamic> response = await networkService.get(
-      '$jsonPlaceholderPath/photos',
+      '$jsonPlaceholderPath/photos?_page=$page&_limit=$amountToLoad',
     );
     return response;
   }
