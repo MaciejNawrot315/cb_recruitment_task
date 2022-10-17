@@ -12,7 +12,7 @@ class MyCashedNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: url,
+      imageUrl: "$url.jpg",
       placeholder: (context, url) => SizedBox(
         height: 200,
         child: Center(
